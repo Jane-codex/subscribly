@@ -3,7 +3,7 @@ import { Link, useNavigate, useOutletContext } from 'react-router-dom';
 import { Check } from 'lucide-react'; 
 import { Button } from '@/components/ui/button';
 import logo from '../assets/logo.png';
-
+import fcGoogle from "../assets/FcGoogle.svg";
 export default function ProviderAuthPage() {
   const navigate = useNavigate();
   const context = useOutletContext<any>();
@@ -103,7 +103,7 @@ export default function ProviderAuthPage() {
               <h3 className="text-3xl font-bold text-center text-zinc-900 mb-8">Welcome!</h3>
               
             <Button variant="outline" className="w-full flex items-center gap-2 h-12 rounded-xl mb-6">
-            <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" className="w-5 h-5" />
+            <img src={fcGoogle} alt="Google" className="w-5 h-5" />
             Sign in with google
           </Button>
 

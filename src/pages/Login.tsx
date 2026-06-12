@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
+import fcGoogle from "../assets/FcGoogle.svg";
 import {
   Form,
   FormControl,
@@ -50,7 +51,6 @@ export default function LoginPage({ setUserName }: { setUserName: (name: string)
     localStorage.setItem('accountType', 'subscriber');
     localStorage.setItem('isReturningUser', 'true');
 
-    // ⚡ FIX: Ensure the signup flag is gone on a standard login
     sessionStorage.removeItem('justSignedUp');
 
     setUserName(matchedUser.fullName);
@@ -64,7 +64,6 @@ return (
   <div className="min-h-screen bg-[#0C0C0D] text-white flex items-center justify-center p-4 md:p-12 font-sans selection:bg-red-700">
     <div className="max-w-[1200px] w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
       <div className="lg:col-span-5 space-y-8">
-        {/* Logo */}
         <div className="flex items-center gap-2 mb-12">
           <div className="items-center justify-center">
             <img src={logo} alt="Logo" />
@@ -125,7 +124,7 @@ return (
             <h3 className="text-3xl font-bold text-center text-zinc-900 mb-8">Welcome!</h3>
         
             <Button variant="outline" className="w-full flex items-center gap-2 h-12 rounded-xl mb-6 text-zinc-700 border-zinc-300 hover:bg-zinc-50">
-              <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" className="w-5 h-5" />
+              <img src={fcGoogle} alt="Google" className="w-5 h-5" />
               Sign in with google
             </Button>
             <div className="flex items-center my-6">

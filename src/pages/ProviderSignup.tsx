@@ -2,6 +2,7 @@ import { Link, useNavigate, useOutletContext } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import logo from '../assets/logo.png';
 import { Check } from "lucide-react";
+import fcGoogle from "../assets/FcGoogle.svg";
 import { 
   Form, 
   FormControl, 
@@ -112,7 +113,7 @@ export default function ProviderSignupPage() {
               <h2 className="text-3xl font-bold text-center text-zinc-900 mb-8">Welcome!</h2>
               
               <Button variant="outline" className="w-full flex items-center gap-2 h-12 rounded-xl mb-6 text-zinc-700 border-zinc-300 hover:bg-zinc-50">
-                <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" className="w-5 h-5" />
+                <img src={fcGoogle} alt="Google" className="w-5 h-5" />
                 Sign Up with google
               </Button>
 
