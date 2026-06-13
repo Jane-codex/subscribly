@@ -295,9 +295,13 @@ useEffect(() => {
                   )}
                 </div>
                 {profileImg && (
-                  <div className="absolute bottom-1 right-1 w-8 h-8 rounded-full flex items-center justify-center overflow-hidden">
-                    <img src={Verified} alt="Verified Tick" className="w-full h-full object-contain" />
-                  </div>
+                  <div className="absolute bottom-1 right-1 w-6 h-6 flex items-center justify-center z-10">
+                <img 
+                  src={Verified} 
+                  alt="Verified badge"
+                  className="w-full h-full object-contain select-none"
+                />
+              </div>
                 )}
                 <div className="absolute inset-0 bg-black/40 rounded-full opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                    <Camera className="text-white w-6 h-6" />

@@ -24,11 +24,11 @@ const transactions = [
 ];
 
 
-interface ProviderSubscriptionsProps {
-  userName: string;
-}
-
-export default function ProviderSubscriptions({ userName }: ProviderSubscriptionsProps) {
+  export default function ProviderSubscriptions() {
+    const accountType = localStorage.getItem('accountType');
+  const storedName = accountType === 'provider' 
+    ? localStorage.getItem('providerName') 
+    : localStorage.getItem('subscriberName');
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState("Select option");
   const [searchQuery, setSearchQuery] = useState("");
@@ -44,7 +44,7 @@ return (
       {/* === MAIN DASHBOARD === */}
       <main className="max-w-[1400px] mx-auto px-8 pt-10 space-y-10">
         <div>
-          <h1 className="text-2xl font-bold mb-8 italic text-black">Welcome <span className="text-orange-500">{userName || "Provider"}</span>
+          <h1 className="text-2xl font-bold mb-8 italic text-black">Welcome <span className="text-orange-500">{storedName || "Provider"}</span>
           </h1>
         </div>
         {/* ===== TOP METRIC CARDS ROW ===== */}

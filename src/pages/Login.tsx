@@ -47,7 +47,7 @@ export default function LoginPage({ setUserName }: { setUserName: (name: string)
 
   if (matchedUser) {
     localStorage.setItem('userToken', 'active_session_token');
-    localStorage.setItem('currentUser', matchedUser.fullName);
+   localStorage.setItem('subscriberName', matchedUser.fullName);
     localStorage.setItem('accountType', 'subscriber');
     localStorage.setItem('isReturningUser', 'true');
 

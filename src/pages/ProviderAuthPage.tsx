@@ -24,12 +24,9 @@ export default function ProviderAuthPage() {
 
    if (matchedUser) {
       localStorage.setItem('userToken', 'active_session_token');
-      localStorage.setItem('currentUser', matchedUser.fullName);
+      localStorage.setItem('providerName', matchedUser.fullName); 
       localStorage.setItem('accountType', 'provider');
-      
-      // THIS IS THE FIX: The switchboard needs this to know you've already onboarded
       localStorage.setItem('isReturningUser', 'true'); 
-      
       if (setUserName) setUserName(matchedUser.fullName);
       
       navigate('/dashboard', { replace: true });

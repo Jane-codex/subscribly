@@ -7,12 +7,9 @@ import Verified from "../assets/Verified-tick.png";
 export default function SettingsPage() {
   const [activeTab, setActiveTab] = useState("Profile");
   const tabs = ["Profile", "Password", "Notifications"];
-   const [profileImg, setProfileImg] = useState<string>(DefaultAvatar);
-    const { setActiveToast } = useOutletContext<any>(); 
-    // 1. Initialize from localStorage so it remembers after you navigate away
-const [displayName, setDisplayName] = useState(() => localStorage.getItem("savedName") || "Morah Codex");
-
-// This will make the inputs blank every time the page loads
+  const [profileImg, setProfileImg] = useState<string>(DefaultAvatar);
+  const { setActiveToast } = useOutletContext<any>(); 
+  const [displayName, setDisplayName] = useState(() => localStorage.getItem("savedName") || "Morah Codex");
 const [profileData, setProfileData] = useState({
   firstName: "",
   lastName: "",
@@ -22,20 +19,16 @@ const [profileData, setProfileData] = useState({
 });
  
     const [isSaving, setIsSaving] = useState(false);
-     
-     
      const [passwords, setPasswords] = useState({
        current: "",
        new: "",
        confirm: ""
      });
      
-     
      const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
        setPasswords({...passwords, [e.target.name]: e.target.value})
      }
      
-   
      const handleSave = () => {
   setIsSaving(true);
 
@@ -43,16 +36,13 @@ const [profileData, setProfileData] = useState({
     if (activeTab === "Profile") {
       const newName = `${profileData.firstName} ${profileData.lastName}`.trim();
       
-      // 1. Update Display Name and Save to LocalStorage
       if (newName) {
         setDisplayName(newName);
         localStorage.setItem("savedName", newName);
       }
 
-      // 2. Save the full profile data to LocalStorage
       localStorage.setItem("savedProfile", JSON.stringify(profileData));
 
-      // 3. Trigger the success toast
       setActiveToast({
         id: Date.now(),
         title: "Profile Updated",
@@ -61,7 +51,7 @@ const [profileData, setProfileData] = useState({
         time: "Just now"
       });
 
-      // 4. NOW clear the inputs to give the user a "Clean Slate"
+     
       setProfileData({ firstName: "", lastName: "", email: "", phone: "", country: "Nig" });
       
     } else if (activeTab === "Password") {
@@ -73,7 +63,6 @@ const [profileData, setProfileData] = useState({
         time: "Just now"
       });
 
-      // Clear password inputs
       setPasswords({ current: "", new: "", confirm: "" });
     }
 
@@ -85,23 +74,18 @@ const [profileData, setProfileData] = useState({
         type: 'fund',
         time: "Just now"
       });
-      // Optionally save to localStorage here too
+     
       localStorage.setItem("savedNotifications", JSON.stringify(notifications));
     }
 
     setIsSaving(false);
   }, 1000);
 };
-       // Reference for the hidden file input
        const fileInputRef = useRef<HTMLInputElement>(null);
-     
-       
-     
        const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
          setProfileData({ ...profileData, [e.target.name]: e.target.value });
        };
      
-       // Handle Image Update
        const handleUpdateClick = () => {
          fileInputRef.current?.click();
        };
@@ -114,7 +98,7 @@ const [profileData, setProfileData] = useState({
          }
        };
      
-       // Handle Image Deletion
+      
        const handleDeletePicture = () => {
          setProfileImg(""); // Resets to empty/placeholder
        };
@@ -122,7 +106,7 @@ const [profileData, setProfileData] = useState({
   const [notifications, setNotifications] = useState({
   subscriptionPush: false,
   subscriptionEmail: false,
-  transactionPush: true, // Based on your image (Transaction Push is ON)
+  transactionPush: true, 
   transactionEmail: false,
 });
 
@@ -136,7 +120,6 @@ const handleToggle = (key: keyof typeof notifications) => {
   return (
       <div className="min-h-screen bg-gray-100 pb-16 font-sans antialiased">
     <div className="max-w-7xl mx-auto px-4 md:px-6 py-6 space-y-8 animate-in fade-in duration-700">
-         {/* Hidden File Input */}
       <input 
         type="file" 
         ref={fileInputRef} 
@@ -145,13 +128,11 @@ const handleToggle = (key: keyof typeof notifications) => {
         accept="image/*" 
       />
 
-      {/* Page Header */}
       <div className="mb-2">
         <h1 className="text-2xl font-bold text-gray-900">Settings</h1>
         <p className="text-gray-500">Manage all account settings</p>
       </div>
 
-      {/* Tabs Row */}
       <div className="flex bg-gray-200/50 p-1 rounded-lg w-full sm:w-fit mb-5 border border-gray-200">
         {tabs.map((tab) => (
           <button
@@ -174,7 +155,7 @@ const handleToggle = (key: keyof typeof notifications) => {
         {/* --- PROFILE TAB CONTENT --- */}
         {activeTab === "Profile" && (
           <div className="animate-in fade-in duration-500">
-            {/* TOP SECTION: AVATAR & NAME */}
+          
             <div className="p-8 md:p-12 flex flex-col md:flex-row items-center gap-8 border-b border-black/10">
               <div className="relative group cursor-pointer" onClick={handleUpdateClick}>
                 <div className="w-32 h-32 rounded-full overflow-hidden border-2 border-white/10 ring-4 ring-white/5 bg-[#141414] flex items-center justify-center">
@@ -185,9 +166,13 @@ const handleToggle = (key: keyof typeof notifications) => {
                   )}
                 </div>
                 {profileImg && (
-                  <div className="absolute bottom-1 right-1 w-8 h-8 rounded-full flex items-center justify-center overflow-hidden">
-                    <img src={Verified} alt="Verified Tick" className="w-full h-full object-contain" />
-                  </div>
+                  <div className="absolute bottom-1 right-1 w-6 h-6 flex items-center justify-center z-10">
+                <img 
+                  src={Verified} 
+                  alt="Verified badge"
+                  className="w-full h-full object-contain select-none"
+                />
+              </div>
                 )}
                 <div className="absolute inset-0 bg-black/40 rounded-full opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                    <Camera className="text-white w-6 h-6" />
@@ -204,7 +189,6 @@ const handleToggle = (key: keyof typeof notifications) => {
               </div>
             </div>
 
-            {/* FORM SECTION */}
             <div className="p-8 md:p-12 space-y-10">
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start lg:items-center">
                 <label className="text-[#31353F] font-medium">Username</label>

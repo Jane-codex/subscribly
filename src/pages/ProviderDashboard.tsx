@@ -37,18 +37,15 @@ export default function ProviderDashboard({ profilePic, setProfilePic }: Provide
     setSelectedReceipt(null);
   };
 
-  // 1. Derive the ID directly. 
-  // If routeId changes, this variable updates immediately.
   const activeId = routeId || localStorage.getItem("last_viewed_subscriber") || "SUB021";
 
-  // 2. Update localStorage only when the ID changes
   useEffect(() => {
     if (activeId) {
       localStorage.setItem("last_viewed_subscriber", activeId);
     }
   }, [activeId]);
 
-  // 3. Find the subscriber (this will now re-run whenever activeId changes)
+ 
   const currentSubscriber = INITIAL_SUBSCRIBERS.find(
     (user) => String(user.id) === String(activeId)
   ) || INITIAL_SUBSCRIBERS[0];
@@ -70,7 +67,7 @@ export default function ProviderDashboard({ profilePic, setProfilePic }: Provide
     fileInputRef.current?.click();
   }; 
 
-  // 3. Update localStorage whenever the activeId changes
+ 
   useEffect(() => {
     if (activeId) {
       localStorage.setItem("last_viewed_subscriber", activeId);
@@ -84,14 +81,11 @@ export default function ProviderDashboard({ profilePic, setProfilePic }: Provide
       {/* == BRAND HERO BANNER == */}
       <div className="h-44 w-full bg-gradient-to-r from-[#500008] via-[#1A0003] to-black relative" />
 
-      {/* == OVERLAPPING PROFILE AVATAR BLOCK == */}
       <div className="max-w-6xl mx-auto px-6 relative -mt-12">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-0 pb-0">
           
-          {/* Profile Avatar and Left Text Column aligned together */}
           <div className="flex flex-col sm:flex-row items-center sm:items-end gap-5">
 
-            {/* Interactive Profile Avatar Container */}
             <div className="relative w-32 h-32 rounded-full border-4 border-white shadow-md overflow-visible bg-zinc-100 shrink-0 group/avatar flex items-center justify-center">
               
               {profilePic ? (
@@ -108,7 +102,6 @@ export default function ProviderDashboard({ profilePic, setProfilePic }: Provide
                 </div>
               )}
 
-              {/* Clickable Camera Hover Overlay */}
               <button 
                 onClick={triggerFileInput}
                 className="absolute inset-0 bg-black/40 rounded-full flex items-center justify-center text-white opacity-0 group-hover/avatar:opacity-100 transition-opacity duration-200 cursor-pointer"

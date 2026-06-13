@@ -62,7 +62,7 @@ const onSubmit = (data: SignupFormValues) => {
   });
 
   localStorage.setItem('appUsers', JSON.stringify(existingUsers));
-  localStorage.setItem('currentUser', data.fullName);
+  localStorage.setItem('subscriberName', data.fullName);
   localStorage.setItem('userToken', 'active_session_token');
   localStorage.setItem('accountType', 'subscriber');
   localStorage.setItem('isReturningUser', 'false');
@@ -163,7 +163,7 @@ return (
                     </FormItem>
                   )}
                 />
-5
+
                 <FormField
                   control={form.control}
                   name="email"

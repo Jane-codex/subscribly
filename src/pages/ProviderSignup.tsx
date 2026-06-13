@@ -39,7 +39,7 @@ export default function ProviderSignupPage() {
   
   localStorage.setItem('providerUsers', JSON.stringify(updatedProviders));
   localStorage.setItem("isReturningUser", "false");
-  localStorage.setItem("currentUser", data.fullName);
+  localStorage.setItem('providerName', data.fullName);
   localStorage.setItem("userToken", "active_session_token");
   localStorage.setItem("accountType", "provider");
   
