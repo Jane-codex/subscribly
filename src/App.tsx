@@ -109,7 +109,7 @@ function App() {
 {/* Subscriptions Dashboard Page */}
 <Route 
   path="/provider/subscriptions" 
-  element={<ProviderSubscriptions userName={userName} />} 
+  element={<ProviderSubscriptions />} 
 />
          <Route 
   path="/provider/subscriptions/plan/linear-basic" 
